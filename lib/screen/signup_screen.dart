@@ -3,6 +3,7 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:instagram_flutter/resources/auth_methods.dart';
 import 'package:instagram_flutter/screen/login_screen.dart';
 import 'package:instagram_flutter/utils/colors.dart';
 import 'package:instagram_flutter/widgets/text_field_input.dart';
@@ -134,7 +135,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 height: 24,
               ),
               InkWell(
-                onTap: signUpUser,
+                onTap: () => AuthMethods().signUpUser(
+                  email: _emailController.text,
+                  password: _passwordController.text,
+                  username: _userNameController.text,
+                  bio: _bioController.text,
+                  file: _image ?? Uint8List(0),
+                ),
                 child: Container(
                   width: double.infinity,
                   alignment: Alignment.center,
